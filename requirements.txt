@@ -1,0 +1,8 @@
+pydub
+moviepy
+librosa
+docx
+
+transformers
+torch
+django

@@ -1,0 +1,118 @@
+{% extends "navbar.html" %}
+
+{% block html %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Login and Signup form</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login_register.css' %}">
+
+    </head>
+
+    <body>
+
+        <div class="page-wrap">
+        
+            <div class="logo-section">
+                <img src="{% static 'img/logo.png' %}" alt="" class="logo">
+                <h1>NLP Login</h1>
+            </div> 
+
+        <div class="login-section">
+
+            {% if messages %}
+
+                <!-- TODO make this a popup -->
+                {% for message in messages %}
+                    <h1> {{message}} </h1>
+                {% endfor %}
+
+            {% endif %}
+            
+            <h1>Sign-In NLP Account</h1>
+
+            <form action="/user_manager/login" class="signInForm" method="post">
+            {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="input-control" name="username" placeholder="Username">
+                </div>
+          
+              <div class="form-group">
+                <label for="username">Password</label>
+                <input type="password" id="password" class="input-control" name="password" placeholder="Password">
+              </div>
+          
+              <div class="form-group">
+                <button class="btn-login">Login</button>
+              </div>
+          
+            </form>
+
+
+            <form action="/user_manager/register" class="signUpForm hidden" method="post">
+            {% csrf_token %}
+
+              <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" class="input-control" name="first_name" placeholder="First Name">
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" class="input-control" name="last_name" placeholder="Last Name">
+              </div>
+
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="input-control" name="username" placeholder="Username">
+              </div>
+
+              <div class="form-group">
+                <label for="username">Email</label>
+                <input type="text" id="email" class="input-control" name="email" placeholder="Email">
+               </div>
+
+              <div class="form-group">
+                <label for="username">Password</label>
+                <input type="password" id="password" class="input-control" name="password" placeholder="Password">
+              </div>
+
+               <div class="form-group">
+                <label for="username">Re-type Password</label>
+                <input type="password" id="password" class="input-control" name="repeat_password" placeholder="Re-type Password">
+               </div>
+
+              <div class="form-group">
+                <button class="btn-login">Sign Up</button>
+              </div>
+
+            </form>
+
+            <p class="pConent signUpText">New to NLP? 
+              <a href="#" id="SignUpbtn">Sign Up</a>
+            </p>
+
+            <p class="pConent signInText hidden">Already Registered? 
+              <a href="#" id="SignInbtn">Sign In</a>
+            </p>
+
+          </div>
+
+        </div>
+
+        <script src="{% static 'js/login_register_jquery.min.js' %}"></script>
+        <script src="{% static 'js/login_register.js' %}"></script>
+
+    </body>
+
+</html>
+
+{% endblock %}
